@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var process = require("process");
 var passport = require('passport');
 var config = require('./config/main');
 var User = require('./app/models/user');
@@ -11,7 +12,7 @@ var chat = require('./src/app');
 var http = require('http');
 var jwt = require('jsonwebtoken');
 var dbUtil = require('./src/dbUtil');
-var port = 8080;
+var port = process.env.PORT || 3000;
 
 
 app = express();
