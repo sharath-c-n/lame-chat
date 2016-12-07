@@ -1,0 +1,96 @@
+<!--
+<link rel="stylesheet" type="text/css" href="css/login.css"/>
+<div align="center" style="font-size:20px;padding-bottom: 8px;padding-top: 10px;font-family:georgia;font-weight:bold;">Login</div>
+
+<div align="center">
+	<form name="loginForm" >
+		<div align="center" class="form-group">
+			<label>Email</label>
+			<input type="email" name="username" class="form-control" ng-model="username" required />
+			<div ng-messages="loginForm.username.$error" class ="SignupError" role="alert">
+				<div ng-message="email">Invalid email address</div>
+			</div>
+		</div>
+
+
+		<div align="center" class="form-group">
+			<label> Password</label>
+			<input type="password" name="password" class="form-control" ng-model="password" required />
+		</div>
+
+		<div align="center" class="form-group">
+			<button style="margin-bottom:8px;" type="submit" class="btn btn-primary" ng-click="login()">login!</button>
+			<p class="err-msg" ng-show="loginFail"> User Name or Password is wrong</p>
+			<p class="sign-link" ><a href="#signup">Sign-up</a></p>
+		</div>
+	</form>
+</div>-->
+<div class="container">
+	<div class="card"></div>
+	<div class="card">
+		<h1 class="title">Login</h1>
+		<form name="loginForm" ng-submit="submit(registrationForm.$valid)">
+			<div class="input-container">
+				<input type="email" name="username"  id="userName" ng-model="username" required="required"/>
+				<label for="Username">Username</label>
+				<div class="bar"></div>
+				<div ng-messages="loginForm.username.$error" class ="SignupError" role="alert">
+					<div ng-message="email">Invalid email address</div>
+				</div>
+			</div>
+
+			<div class="input-container">
+				<input type="password" id="Password" ng-model="password" required="required"/>
+				<label for="Password">Password</label>
+				<div class="bar"></div>
+
+			</div>
+			<div class="button-container">
+				<button ng-click="login()"><span>Go</span></button>
+			</div>
+			<div class="footer" class="err-msg" ng-show="loginFail">User Name or Password is wrong</div>
+		</form>
+	</div>
+	<div class="card alt">
+		<div class="toggle" ng-click="showSignup()"></div>
+		<h1 class="title">SignUp
+			<div class="close" ng-click="showLogin()"></div>
+		</h1>
+		<form name="registrationForm">
+			<div class="input-container">
+				<input name="email" ng-model="user.email" type="email" id="Username" required="required"/>
+				<label for="Username">Email</label>
+				<div class="bar"></div>
+				<div ng-messages="registrationForm.email.$error" class ="SignupError" role="alert">
+					<div ng-message="email">Invalid email address</div>
+				</div>
+			</div>
+			<div class="input-container">
+				<input name="password" type="password" id="Password" ng-model="user.password"
+					   ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" required />
+				<label for="Password">Password</label>
+				<div class="bar"></div>
+				<div ng-messages="registrationForm.password.$error" class ="SignupError" role="alert">
+					<div ng-message="pattern">
+						<ul>
+							<li>Password should be atleast 8 characters long</li>
+							<li>should contain one number,one character and one special character</li>
+						</ul>
+					</div>
+					</div>
+			</div>
+			<div class="input-container">
+				<input type="password" ng-model="user.confirmPassword" name="confirmPassword" id="Repeat Password" compare-to="user.password" required />
+				<label for="Repeat Password">Repeat Password</label>
+				<div class="bar"></div>
+				<div ng-messages="registrationForm.confirmPassword.$error" class ="SignupError" role="alert">
+					<div  ng-message="compareTo" >Must match the password</div>
+				</div>
+			</div>
+			<div class="button-container">
+				<button ng-click="submit(registrationForm.$valid)"><span>SignUp</span></button>
+			</div>
+			<div class="footer errorFooter" class="err-msg" ng-show="signupFail">{{message}}</div>
+		</form>
+	</div>
+</div>

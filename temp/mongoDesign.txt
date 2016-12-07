@@ -1,0 +1,42 @@
+chat
+{
+				par1 :String
+				par2 :String,
+				chatHistory : [
+				{time : date,emit : boolean ,message : String}
+				]
+			}		  
+}
+
+Group :{
+
+		grouID :
+		participents : [],
+		cahthistory : [
+		{time : date,emitFrom : Username ,message : String}
+		]
+}
+
+chat_recent 
+{
+useId: 
+list :[size<=10]
+}
+
+user :
+{
+	role : ENUM,
+	name :
+	email:
+	password:
+	avatar:
+}
+
+friends 
+{
+	usedId : 
+	friendsList:[]
+}
+
+
+

@@ -1,0 +1,16 @@
+<div id="options-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4><b>Chat options:</b></h4>
+                <div class="togglebutton">
+                    <label>Emojis<input id="emoji" type="checkbox" ng-change="change()"  ng-model="settings.emoji"></label>
+                </div>
+                <div class="togglebutton" id="toggle-inline">
+                    <label>Inline Images<input id="inline" type="checkbox" ng-change="change()"  ng-model="settings.inline"></label>
+                </div>
+                <div class="togglebutton" id="toggle-desktop" >
+                    <label>Desktop Notifications<input id="desktop" type="checkbox" ng-change="change(true)" ng-model="settings.desktop"></label>
+                </div>
+            </div>
+        </div>
+</div>

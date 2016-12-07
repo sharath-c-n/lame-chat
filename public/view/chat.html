@@ -1,0 +1,39 @@
+<ng-include src="'view/header.html'"></ng-include>
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1"><br>
+            <div class="well page active chat">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 ">
+                        <div>
+                            <br>
+                            <div id="panel">
+                                <div class="chat-history">
+                                    <ul></ul>
+                                </div>
+                            </div>
+                            <p id="typing"><br></p>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="input-group">
+                                        <div class="chat-message clearfix">
+                                            <input type="text" name="message-to-send" id="message-to-send"
+                                                   placeholder="Type your message" ng-model="userMsg" ng-disabled="!connected"
+                                                   ng-keyup="sendMessage($event)" ng-blur="updateTyping(false)"/>
+                                        </div>
+                                                <span class="input-group-btn">
+                                                    <button id="send" class="btn btn-primary btn-flat"
+                                                            ng-disabled="!connected"
+                                                            ng-click="sendMessage($event)">Send</button>
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

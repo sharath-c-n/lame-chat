@@ -1,0 +1,14 @@
+{
+  "name": "jquery-linkify",
+  "homepage": "https://github.com/maranomynet/linkify",
+  "_release": "ff1cce2e8f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ff1cce2e8fe920798224b46cdb160692582f506a"
+  },
+  "_source": "https://github.com/maranomynet/linkify.git",
+  "_target": "*",
+  "_originalSource": "jquery-linkify",
+  "_direct": true
+}
