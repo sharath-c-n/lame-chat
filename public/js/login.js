@@ -7,8 +7,7 @@ angular.module("lamechat").controller('Login',['$scope','LoginService','$state',
     $scope.login = function(){
         LoginService.login($scope.username,$scope.password,function(res){
             if(res){
-                LoginService.getChatList();
-                $state.go("home");
+                $state.go("chat");
             }
             else{
                 $scope.loginFail=true;
@@ -48,7 +47,7 @@ angular.module("lamechat").controller('Login',['$scope','LoginService','$state',
                 email: $scope.user.email,
                 password: $scope.user.password,
                 name: $scope.user.username
-            }).success(function (data) {
+            }).then(function (data) {
                 console.log(data);
                 if(data && data.success){
                     clearForm();
@@ -58,7 +57,7 @@ angular.module("lamechat").controller('Login',['$scope','LoginService','$state',
                     $scope.signupFail = true;
                     $scope.message = data.message;
                 }
-            }).error(function () {
+            },function () {
                 console.log("Failed to register")
             });
         } else {

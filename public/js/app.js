@@ -1,9 +1,13 @@
 (function () {
-    angular.module('lamechat', ['ui.router', 'angular-jwt', 'angular-storage','ngAnimate', 'ngSanitize', 'ui.bootstrap','ngMessages'])
-        .config(function ($stateProvider, $httpProvider, $urlRouterProvider, jwtInterceptorProvider) {
+    angular.module('lamechat', ['ui.router', 'angular-jwt', 'angular-storage', 'ngAnimate', 'ui.bootstrap', 'ngMessages'])
+        .config(function ($stateProvider, $httpProvider, $urlRouterProvider, jwtInterceptorProvider, jwtOptionsProvider) {
             jwtInterceptorProvider.tokenGetter = function (store) {
                 return store.get('jwt');
             };
+
+            jwtOptionsProvider.config({
+                authPrefix: ""
+            });
 
             $urlRouterProvider.otherwise('/');
 
@@ -14,24 +18,15 @@
                 url: "/",
                 controller: 'Login',
                 templateUrl: 'view/login.html'
-            })
-                .state({
-                    name: 'home',
-                    url: "/home",
-                    controller: 'Home',
-                    templateUrl: 'view/chat.html',
-                    data: {
-                        requiresLogin: true
-                    }
-                }).state({
-                name: 'setting',
-                url: "/setting",
-                controller: 'Setting',
-                templateUrl: 'view/setting.html',
+            }).state({
+                name: 'chat',
+                url: "/chat",
+                controller: 'Chat',
+                templateUrl: 'view/chat.html',
                 data: {
                     requiresLogin: true
                 }
-            });
+            })
         })
         .run(function ($rootScope, $state, store, jwtHelper, $location) {
             $rootScope.$on('$stateChangeStart', function (e, to) {

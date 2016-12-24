@@ -5,14 +5,14 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var process = require("process");
 var passport = require('passport');
-var config = require('./config/main');
+var config = require('./app/config/main');
 var User = require('./app/models/user');
 var Chats = require('./app/models/chats');
-var chat = require('./src/app');
+var chat = require('./app/app');
 var http = require('http');
 var jwt = require('jsonwebtoken');
-var dbUtil = require('./src/dbUtil');
-var port = process.env.PORT || 3000;
+var dbUtil = require('./app/dbUtil');
+var port = process.env.PORT || 8080;
 
 
 app = express();
@@ -38,7 +38,7 @@ mongoose.connect(config.database, {mongos: false}, function (err) {
 });
 
 //Bring in the passport stratergy that has been defined
-require('./config/passport')(passport);
+require('./app/config/passport')(passport);
 
 //Create api routes 
 var apiRoutes = express.Router();

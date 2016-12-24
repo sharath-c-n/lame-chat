@@ -4,11 +4,12 @@
 angular.module("lamechat").factory("ChatService",['$http','LoginService',function($http,loginService){
     function sync(callback){
         loginService.getChatList(function(data){
+            console.log("chatService",data);
             if(data)
             {
                 $http.get('/api/chatHist/'+data.chat_ids[0].chat_id)
-                    .success(function(data){
-                        callback &&  callback(data.chatHistory);
+                    .then(function(response){
+                        callback &&  callback(response.data.chatHistory);
                     });
             }
         })

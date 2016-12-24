@@ -1,16 +1,16 @@
 angular.module("lamechat").factory("LoginService",['$http','store','jwtHelper',function($http,store,jwtHelper){
-    var chatList = null;
     function login(username,password,callback){
         $http.post('/api/authenticate',{email:username,password:password})
-        .success(function(data){
-            store.set('jwt',data.token);
-            console.log(data);
+        .then(function(response){
+            var token = response && response.data && response.data.token;
+            if( token && token.indexOf("JWT") == 0)
+            store.set('jwt',token);
             callback(true);
-        }).error(function(){
+        },function(){
            alert("Failed to authenticate"); 
             callback(false);
         });
-    };
+    }
 
     function getUserName(){
         if(store.get('jwt')){
@@ -31,11 +31,10 @@ angular.module("lamechat").factory("LoginService",['$http','store','jwtHelper',f
     function getChatList(callback){
         if(store.get('jwt')){
             $http.get('/api/chatList')
-                .success(function(data){
-                    chatList = data;
-                    console.log(chatList);
-                    callback && callback(chatList);
-                }).error(function(){
+                .then(function(response){
+                    console.log(response.data);
+                    callback && callback(response.data);
+                },function(){
                 callback && callback(null);
             });
         }

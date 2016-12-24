@@ -1,7 +1,7 @@
 /**
  * @author Sharath
  */
-angular.module("lamechat").service("SocketService", ['$http', '$window', function ($http, $window) {
+angular.module("lamechat").service("SocketService", ['$window', function ($window) {
     var socket;
     var ctlCallbacks = {};
     var userName;
